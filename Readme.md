@@ -3,7 +3,7 @@
 
 
 
-##Checkable task list
+## Checkable task list
 
 |Task|Status|James|Joe|
 |:---|:---:|:---:|:---:|
@@ -20,11 +20,11 @@
 |Screenshots of tests in action|[ ]|[ ]|[ ]|
 |Executive Summary|[ ]|[ ]|[ ]|
 |Ensure Contribution gap < 20%|[ ]|[ ]|[ ]|
-##Requirements
+## Requirements
 
 //work on this section
 
-##Instructions
+## Instructions
 **Intro**
 
 Create Github page
@@ -38,6 +38,8 @@ Create Enhancement issues for each requirement
 **User Acceptance Testing**
 
 Design User Acceptance Test cases matching the agreed requirements
+
+[Spreadsheet](https://docs.google.com/spreadsheets/d/15PxG6aYk8GWEvuflCpSOwSslqNFXBI7XHV9PxTFMVSc/edit?usp=sharing)
 
 Test cases must cover
 - Equivalent classes of input values and edge cases
