@@ -6,5 +6,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameManager {
-    public static List<Player> players = new ArrayList<Player>();
+    private List<Player> players = new ArrayList<>();
+    private static GameManager instnace;
+
+    private GameManager() {
+        // do init here
+    }
+
+    public static GameManager getInstance() {
+        if(instnace == null) instnace = new GameManager();
+        return instnace;
+    }
+
+    public List<Player> getPlayers() {
+        return players;
+    }
 }

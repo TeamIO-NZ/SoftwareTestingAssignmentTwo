@@ -6,23 +6,21 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Map;
-
 public class GameManagerTest {
 
     @Before
     public void init(){
-        GameManager.players.add(new Player());
-        GameManager.players.add(new Player());
+        GameManager.getInstance().getPlayers().add(new Player() {});
+        GameManager.getInstance().getPlayers().add(new Player() {});
     }
     @Test
     public void CheckPlayerCount_ExpectingTwo(){
-        Assert.assertEquals(GameManager.players.size(), 2);
+        Assert.assertEquals(GameManager.getInstance().getPlayers().size(), 2);
     }
     @Test
     public void CheckPlayersExist_ExpectingTrue(){
-        for (int i = 0; i < GameManager.players.size(); i++){
-            if (GameManager.players.get(i) == null){
+        for (int i = 0; i < GameManager.getInstance().getPlayers().size(); i++){
+            if (GameManager.getInstance().getPlayers().get(i) == null){
                 Assert.fail();
                 break;
             }
