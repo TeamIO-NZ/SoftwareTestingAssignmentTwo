@@ -7,15 +7,15 @@ import java.util.List;
 
 public class GameManager {
     private List<Player> players = new ArrayList<>();
-    private static GameManager instnace;
+    private static GameManager instance;
 
     private GameManager() {
         // do init here
     }
 
     public static GameManager getInstance() {
-        if(instnace == null) instnace = new GameManager();
-        return instnace;
+        if(instance == null) instance = new GameManager();
+        return instance;
     }
 
     public List<Player> getPlayers() {
