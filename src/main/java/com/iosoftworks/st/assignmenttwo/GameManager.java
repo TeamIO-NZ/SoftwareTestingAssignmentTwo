@@ -1,6 +1,6 @@
 package com.iosoftworks.st.assignmenttwo;
 
-import com.iosoftworks.st.assignmenttwo.models.Player;
+import com.iosoftworks.st.assignmenttwo.models.player.Player;
 
 import java.util.ArrayList;
 import java.util.List;
