@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameManager {
-    private List<Player> players = new ArrayList<>();
+    private final List<Player> players = new ArrayList<>();
     private static GameManager instance;
 
     private GameManager() {
