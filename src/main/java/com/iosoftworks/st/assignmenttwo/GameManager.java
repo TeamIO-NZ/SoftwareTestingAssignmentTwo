@@ -12,8 +12,19 @@ public class GameManager {
     private static GameManager instance;
 
     private GameManager() {
-        players.add(new HumanPlayer());
-        players.add(new AIPlayer());
+        Roller roller = new Roller();
+        Player human = new HumanPlayer();
+        Player ai = new AIPlayer();
+        players.add(human);
+        players.add(ai);
+
+        human.score.add(roller.roll());
+        human.score.add(roller.roll());
+        ai.score.add(roller.roll());
+        ai.score.add(roller.roll());
+
+
+
     }
 
     public static GameManager getInstance() {
