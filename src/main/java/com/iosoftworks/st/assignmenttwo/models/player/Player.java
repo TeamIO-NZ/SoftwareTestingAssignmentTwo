@@ -10,17 +10,16 @@ public abstract class Player {
     public List<Integer> score;
     public int totalScore;
 
-    public abstract void fold();
-    public abstract void hold();
+    public abstract void turnLogic();
 
+    Roller roller = new Roller();
 
-
-    public void initialHand(Roller roller){
+    public void initialHand(){
         score.add(roller.roll());
         score.add(roller.roll());
         sumScore();
     }
-    public void newRoll(Roller roller){
+    public void newRoll(){
         score.add(roller.roll());
         sumScore();
     }

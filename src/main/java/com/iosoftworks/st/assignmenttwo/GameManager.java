@@ -18,8 +18,8 @@ public class GameManager {
         players.add(human);
         players.add(ai);
 
-        human.initialHand(roller);
-        ai.initialHand(roller);
+        human.initialHand();
+        ai.initialHand();
 
     }
 
