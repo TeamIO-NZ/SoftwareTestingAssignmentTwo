@@ -5,11 +5,13 @@ import com.iosoftworks.st.assignmenttwo.models.player.ai.AIPlayer;
 import com.iosoftworks.st.assignmenttwo.models.player.human.HumanPlayer;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class GameManager {
     private final List<Player> players = new ArrayList<>();
     private static GameManager instance;
+
 
     private GameManager() {
         Roller roller = new Roller();
@@ -21,6 +23,11 @@ public class GameManager {
         human.initialHand();
         ai.initialHand();
 
+        //todo middle steps. actual game logic bit
+
+
+        checkVictor();
+
     }
 
     public static GameManager getInstance() {
@@ -30,5 +37,14 @@ public class GameManager {
 
     public List<Player> getPlayers() {
         return players;
+    }
+
+    //todo make this check for over 21.
+    public void checkVictor(){
+       if (players.get(0).totalScore > players.get(1).totalScore){
+           System.out.println("human wins");
+       }else if (players.get(1).totalScore > players.get(0).totalScore){
+           System.out.println("ai wins");
+       }
     }
 }
