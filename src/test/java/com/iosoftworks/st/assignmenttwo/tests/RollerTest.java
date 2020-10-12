@@ -20,5 +20,9 @@ public class RollerTest {
         int zero = 0;
         assertFalse("Error, Rolled number to low",  roller.roll()  <= zero);
     }
-
+    @Test
+    public void rollValidValue_shouldTrue(){
+        int zero = 0;
+        assertFalse("Rolled Correct Number",  roller.roll()  >= 0);
+    }
 }
