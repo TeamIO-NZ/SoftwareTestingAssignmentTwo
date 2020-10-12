@@ -31,6 +31,24 @@ public class GameManagerTest {
         }
         Assert.assertTrue(true);
     }
+    //TODO
+    @Test
+    public void CheckWinnerHuman_ExpectingTrue(){
 
+    }
+    //TODO
+    @Test
+    public void CheckWinnerAI_ExpectingTrue(){
 
+    }
+    //TODO
+    @Test
+    public void CheckWinnerDraw_ExpectingTrue(){
+
+    }
+    //TODO
+    @Test
+    public void CheckWinnerNotNull_ExpectingTrue(){
+
+    }
 }

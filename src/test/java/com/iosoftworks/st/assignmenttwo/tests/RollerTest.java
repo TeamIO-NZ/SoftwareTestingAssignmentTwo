@@ -115,4 +115,9 @@ public class RollerTest {
             }
         }
     }
+
+    @Test
+    public void sumNumbers_checkEightPlusTwo_equalsTen(){
+        assertEquals(10, roller.sum(8,2));
+    }
 }

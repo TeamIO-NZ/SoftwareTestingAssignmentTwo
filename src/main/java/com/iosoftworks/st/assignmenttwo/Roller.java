@@ -8,4 +8,8 @@ public class Roller {
         //this was found from a test failing
        return rand.nextInt(12) + 1;
     }
+
+    public int sum(int numOne, int numTwo){
+        return numOne + numTwo;
+    }
 }
