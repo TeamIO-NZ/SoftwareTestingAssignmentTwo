@@ -11,8 +11,9 @@ public class GameManagerTest {
 
     @BeforeClass
     public static void init(){
-        GameManager.getInstance().getPlayers().add(new HumanPlayer());
-        GameManager.getInstance().getPlayers().add(new AIPlayer());
+        //don't need these because we init them in the game manager.
+//        GameManager.getInstance().getPlayers().add(new HumanPlayer());
+//        GameManager.getInstance().getPlayers().add(new AIPlayer());
     }
     @Test
     public void CheckPlayerCount_ExpectingTwo(){

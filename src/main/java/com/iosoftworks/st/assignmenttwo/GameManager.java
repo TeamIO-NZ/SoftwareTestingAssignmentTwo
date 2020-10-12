@@ -1,6 +1,8 @@
 package com.iosoftworks.st.assignmenttwo;
 
 import com.iosoftworks.st.assignmenttwo.models.player.Player;
+import com.iosoftworks.st.assignmenttwo.models.player.ai.AIPlayer;
+import com.iosoftworks.st.assignmenttwo.models.player.human.HumanPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,8 @@ public class GameManager {
     private static GameManager instance;
 
     private GameManager() {
-        // do init here
+        players.add(new HumanPlayer());
+        players.add(new AIPlayer());
     }
 
     public static GameManager getInstance() {
