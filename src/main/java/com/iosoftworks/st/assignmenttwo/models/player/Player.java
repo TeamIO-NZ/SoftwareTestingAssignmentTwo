@@ -2,12 +2,13 @@ package com.iosoftworks.st.assignmenttwo.models.player;
 
 import com.iosoftworks.st.assignmenttwo.Roller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Player {
 
     public String name;
-    public List<Integer> score;
+    public List<Integer> score = new ArrayList<>(); // found fix via testing "= new ArrayList<>();"
     public int totalScore;
 
     public abstract void turnLogic();

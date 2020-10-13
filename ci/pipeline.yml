@@ -1,33 +1,49 @@
 ---
 resources:
-  - name: AssignmentTwoRepo
+  - name: assignment-repo
     type: git
     source:
       uri: https://github.com/TeamIO-NZ/SoftwareTestingAssignmentTwo
-      breanch: master
+      branch: master
 
 jobs:
   - name: test
     plan:
-      - get: AssignmentTwoRepo
+      - get: assignment-repo
         trigger: true
       - task: run-tests
-        platform: linux
-        image_resource: &jdkImage
-          type: registry-image
-          source: { repository: "openjdk:11-jdk"}
-        run:
-          path: sh
-          args: ["./gradlew", "test"]
+        config:
+            inputs:
+                - name: assignment-repo
+            platform: linux
+            image_resource: &jdkImage
+              type: registry-image
+              source:
+                repository: "openjdk"
+                tag: "11-jdk"
+            run:
+              path: sh
+              args: 
+              - -exc
+              - |
+                cd assignment-repo
+                ./gradlew test --stacktrace
 
   - name: build
     plan:
-      - get: AssignmentTwoRepo
-        passed: [unit]
+      - get: assignment-repo
+        passed: [test]
         trigger: true
       - task: run-build
-        platform: linux
-        image_resource: *jdkImage
-        run:
-          path: sh
-          args: ["./gradlew", "build"]
+        config:
+            inputs:
+                - name: assignment-repo
+            platform: linux
+            image_resource: *jdkImage
+            run:
+              path: sh
+              args: 
+              - -exc
+              - |
+                cd assignment-repo
+                ./gradlew build --stacktrace
