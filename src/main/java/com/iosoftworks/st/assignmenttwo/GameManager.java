@@ -39,8 +39,27 @@ public class GameManager {
         return players;
     }
 
-    //todo make this check for over 21.
     public void checkVictor(){
+        if(players.get(0).totalScore > 21){
+            if(players.get(1).totalScore > 21){
+                //todo neither wins
+                System.out.println("neither wins");
+            }
+            else{
+                //todo human wins
+                System.out.println("human wins");
+            }
+        }
+       else if(players.get(1).totalScore > 21){
+            if(players.get(0).totalScore > 21){
+                //todo neither wins
+                System.out.println("neither wins");
+            }
+            else{
+                //todo ai wins
+                System.out.println("ai wins");
+            }
+        }
        if (players.get(0).totalScore > players.get(1).totalScore){
            System.out.println("human wins");
        }else if (players.get(1).totalScore > players.get(0).totalScore){
