@@ -8,7 +8,7 @@ import java.util.List;
 public abstract class Player {
 
     public String name;
-    public List<Integer> score = new ArrayList<>();
+    public List<Integer> score = new ArrayList<>(); // found fix via testing "= new ArrayList<>();"
     public int totalScore;
 
     public abstract void turnLogic();
