@@ -15,6 +15,8 @@ public class GameManagerTest {
 //        GameManager.getInstance().getPlayers().add(new HumanPlayer());
 //        GameManager.getInstance().getPlayers().add(new AIPlayer());
     }
+
+
     @Test
     public void CheckPlayerCount_ExpectingTwo(){
         Assert.assertEquals(2, GameManager.getInstance().getPlayers().size());
@@ -31,4 +33,25 @@ public class GameManagerTest {
     }
 
 
+
+    //TODO
+    @Test
+    public void CheckWinnerHuman_ExpectingTrue(){
+
+    }
+    //TODO
+    @Test
+    public void CheckWinnerAI_ExpectingTrue(){
+
+    }
+    //TODO
+    @Test
+    public void CheckWinnerDraw_ExpectingTrue(){
+
+    }
+    //TODO
+    @Test
+    public void CheckWinnerNotNull_ExpectingTrue(){
+
+    }
 }

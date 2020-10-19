@@ -6,12 +6,7 @@ import com.iosoftworks.st.assignmenttwo.models.player.Player;
 public class HumanPlayer extends Player {
 
     @Override
-    public void fold() {
-
-    }
-
-    @Override
-    public void hold() {
-
+    public void turnLogic() {
+        //todo add logic here so players can choose to roll again or hold.
     }
 }
