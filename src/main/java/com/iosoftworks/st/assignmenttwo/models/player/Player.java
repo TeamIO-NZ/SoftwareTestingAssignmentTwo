@@ -2,12 +2,13 @@ package com.iosoftworks.st.assignmenttwo.models.player;
 
 import com.iosoftworks.st.assignmenttwo.Roller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Player {
 
     public String name;
-    public List<Integer> score;
+    public List<Integer> score = new ArrayList<>();
     public int totalScore;
 
     public abstract void turnLogic();
@@ -15,12 +16,13 @@ public abstract class Player {
     Roller roller = new Roller();
 
     public void initialHand(){
-        score.add(roller.roll());
-        score.add(roller.roll());
-        sumScore();
+        this.score.add(roller.roll());
+        this.score.add(roller.roll());
     }
+
     public void newRoll(){
-        score.add(roller.roll());
+        int roll = roller.roll();
+        score.add(roll);
         sumScore();
     }
     public void sumScore(){

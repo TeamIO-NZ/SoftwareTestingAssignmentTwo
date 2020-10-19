@@ -1,7 +1,6 @@
 package com.iosoftworks.st.assignmenttwo.tests;
 
 import com.iosoftworks.st.assignmenttwo.Roller;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,7 +23,7 @@ public class RollerTest {
         assertTrue("Rolled Correct Number",  value  >= 1 && value <= 13);
     }
     @Test
-    public void rollMaxs_shouldFail(){
+    public void rollMaxes_shouldFail(){
         int zero = 0;
         assertFalse("Error, Fails if the rollers rolls are above thirteen",  roller.roll()  >= 13);
     }

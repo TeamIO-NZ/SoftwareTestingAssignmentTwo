@@ -5,7 +5,6 @@ import com.iosoftworks.st.assignmenttwo.models.player.ai.AIPlayer;
 import com.iosoftworks.st.assignmenttwo.models.player.human.HumanPlayer;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class GameManager {
