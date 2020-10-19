@@ -9,8 +9,14 @@ import com.googlecode.lanterna.terminal.Terminal;
 import com.iosoftworks.st.assignmenttwo.GameManager;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
 public class TerminalManager {
+
+    private Terminal term = null;
+    private List<Consumer<KeyStroke>> keyStrokeConsumers = new ArrayList<>();
 
     public static void main(String... args) {
         new TerminalManager();
@@ -19,7 +25,6 @@ public class TerminalManager {
     public TerminalManager() {
         DefaultTerminalFactory factory = new DefaultTerminalFactory();
 
-        Terminal term = null;
         try {
             term = factory.createTerminal();
 
@@ -31,7 +36,7 @@ public class TerminalManager {
             boolean playerTurn = false;
             drawTurnIndicator(term, playerTurn);
 
-            boolean finalPlayerTurn = playerTurn;
+            boolean finalPlayerTurn = playerTurn; //TODO: this will always be false, need to replace with method from GameManager
             term.addResizeListener((terminal, newSize) -> {
                 try {
                     terminal.clearScreen();
@@ -49,6 +54,9 @@ public class TerminalManager {
                     playerTurn = !playerTurn;
                     drawTurnIndicator(term, playerTurn);
                 }
+
+                KeyStroke finalStroke = stroke;
+                this.keyStrokeConsumers.forEach(keyStrokeConsumer -> keyStrokeConsumer.accept(finalStroke));
 
                 stroke = term.readInput();
             }
@@ -134,5 +142,9 @@ public class TerminalManager {
         graphics.putString(size.getColumns() - 7, 5, playerTurn ? " " : String.valueOf(Symbols.TRIANGLE_LEFT_POINTING_MEDIUM_BLACK), SGR.BOLD);
 
         term.flush();
+    }
+
+    public void registerKeyEvent(Consumer<KeyStroke> keyStrokeConsumer) {
+        this.keyStrokeConsumers.add(keyStrokeConsumer);
     }
 }
