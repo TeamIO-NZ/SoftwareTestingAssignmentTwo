@@ -147,4 +147,16 @@ public class TerminalManager {
     public void registerKeyEvent(Consumer<KeyStroke> keyStrokeConsumer) {
         this.keyStrokeConsumers.add(keyStrokeConsumer);
     }
+
+    public void writeString(String text, int x, int y, boolean bold) {
+        try {
+            TextGraphics graphics = term.newTextGraphics();
+
+            if (bold) graphics.putString(x, y, text, SGR.BOLD);
+            else graphics.putString(x, y, text);
+            term.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
