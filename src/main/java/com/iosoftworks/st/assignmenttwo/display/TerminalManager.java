@@ -130,8 +130,8 @@ public class TerminalManager {
         TerminalSize size = term.getTerminalSize();
         TextGraphics graphics = term.newTextGraphics();
 
-        graphics.putString(6, 5, playerTurn ? String.valueOf(Symbols.ARROW_LEFT) : " ", SGR.BOLD);
-        graphics.putString(size.getColumns() - 7, 5, playerTurn ? " " : String.valueOf(Symbols.ARROW_RIGHT), SGR.BOLD);
+        graphics.putString(6, 5, playerTurn ? String.valueOf(Symbols.TRIANGLE_RIGHT_POINTING_MEDIUM_BLACK) : " ", SGR.BOLD);
+        graphics.putString(size.getColumns() - 7, 5, playerTurn ? " " : String.valueOf(Symbols.TRIANGLE_LEFT_POINTING_MEDIUM_BLACK), SGR.BOLD);
 
         term.flush();
     }
