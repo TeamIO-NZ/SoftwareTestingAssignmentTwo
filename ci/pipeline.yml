@@ -40,7 +40,7 @@ jobs:
             path: sh
             args:
             - -c
-            - ./ci/notify_discord.sh "((hook-url))" assignmnet-two success
+            - ./assignment-repo/ci/notify_discord.sh "((hook-url))" assignmnet-two success
         
     on_abort:
       do:
@@ -54,7 +54,7 @@ jobs:
             path: sh
             args:
             - -c
-            - ./ci/notify_discord.sh "((hook-url))" assignmnet-two abort
+            - ./assignment-repo/ci/notify_discord.sh "((hook-url))" assignmnet-two abort
         
     on_failure:
       do:
@@ -68,7 +68,7 @@ jobs:
             path: sh
             args:
             - -c
-            - ./ci/notify_discord.sh "((hook-url))" assignmnet-two failure
+            - ./assignment-repo/ci/notify_discord.sh "((hook-url))" assignmnet-two failure
     on_error:
       do:
       - task: notify-error
@@ -81,4 +81,4 @@ jobs:
             path: sh
             args:
             - -c
-            - ./ci/notify_discord.sh "((hook-url))" assignmnet-two error
+            - ./assignment-repo/ci/notify_discord.sh "((hook-url))" assignmnet-two error
