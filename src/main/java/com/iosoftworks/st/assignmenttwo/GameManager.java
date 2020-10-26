@@ -31,33 +31,27 @@ public class GameManager {
     }
 
     public void checkVictor(){
-        if(players.get(0).totalScore > 21){
-            if(players.get(1).totalScore > 21){
-                //todo neither wins
-                System.out.println("neither wins");
+        //easy reference for players
+        Player humanPlayer = players.get(0);
+        Player aiPlayer = players.get(1);
+        if (humanPlayer.totalScore > 21 && aiPlayer.totalScore > 21){
+            System.out.println("neither wins");
+        }
+        else if (humanPlayer.totalScore > 21 && aiPlayer.totalScore < 21){
+            System.out.println("human wins");
+        }
+        else if (humanPlayer.totalScore < 21 && aiPlayer.totalScore > 21){
+            System.out.println("ai wins");
+        }
+        else{
+            if (humanPlayer.totalScore < aiPlayer.totalScore){
+                System.out.println("ai wins");
             }
             else{
-                //todo human wins
                 System.out.println("human wins");
             }
         }
-       else if(players.get(1).totalScore > 21){
-            if(players.get(0).totalScore > 21){
-                //todo neither wins
-                System.out.println("neither wins");
-            }
-            else{
-                //todo ai wins
-                System.out.println("ai wins");
-            }
-        }
-       if (players.get(0).totalScore > players.get(1).totalScore){
-           System.out.println("human wins");
-       }else if (players.get(1).totalScore > players.get(0).totalScore){
-           System.out.println("ai wins");
-       }
     }
-
 
     public void beginLoop() {
         boolean shouldExit = false;
@@ -65,10 +59,9 @@ public class GameManager {
 
         while(!shouldExit) {
             // player turn
-            players.get(0).turnLogic();
+            boolean isPlayerDone = players.get(0).turnLogic();
             // ai turn
-            players.get(1).turnLogic();
-
+            boolean isAIDone =players.get(1).turnLogic();
             // check victor
             checkVictor();
             // prompt continue?

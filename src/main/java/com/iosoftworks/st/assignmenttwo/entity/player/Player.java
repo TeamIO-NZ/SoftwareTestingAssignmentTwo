@@ -11,11 +11,13 @@ public abstract class Player {
     public List<Integer> score = new ArrayList<>(); // found fix via testing "= new ArrayList<>();"
     public int totalScore;
 
-    public abstract void turnLogic();
+    //returns true when turn is complete
+    public abstract boolean turnLogic();
 
     Roller roller = new Roller();
 
     public void initialHand(){
+        score.clear();
         this.score.add(roller.roll());
         this.score.add(roller.roll());
     }
@@ -32,4 +34,5 @@ public abstract class Player {
             totalScore += num;
         }
     }
+
 }
