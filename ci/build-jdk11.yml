@@ -20,7 +20,7 @@ outputs:
     path: build/libs
 
 caches:
-  - path: .gradle/
+  - path: repo/.gradle/
 
 run:
   path: sh

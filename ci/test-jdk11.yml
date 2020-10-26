@@ -16,7 +16,7 @@ inputs:
     path: repo
 
 caches:
-  - path: .gradle/
+  - path: repo/.gradle/
 
 run:
   path: sh
