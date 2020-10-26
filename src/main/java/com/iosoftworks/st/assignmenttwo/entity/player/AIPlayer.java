@@ -1,6 +1,4 @@
-package com.iosoftworks.st.assignmenttwo.models.player.ai;
-
-import com.iosoftworks.st.assignmenttwo.models.player.Player;
+package com.iosoftworks.st.assignmenttwo.entity.player;
 
 public class AIPlayer extends Player {
 

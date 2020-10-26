@@ -1,4 +1,4 @@
-package com.iosoftworks.st.assignmenttwo.models.player;
+package com.iosoftworks.st.assignmenttwo.entity.player;
 
 import com.iosoftworks.st.assignmenttwo.Roller;
 
