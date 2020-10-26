@@ -1,8 +1,8 @@
 package com.iosoftworks.st.assignmenttwo;
 
-import com.iosoftworks.st.assignmenttwo.models.player.Player;
-import com.iosoftworks.st.assignmenttwo.models.player.ai.AIPlayer;
-import com.iosoftworks.st.assignmenttwo.models.player.human.HumanPlayer;
+import com.iosoftworks.st.assignmenttwo.entity.player.Player;
+import com.iosoftworks.st.assignmenttwo.entity.player.AIPlayer;
+import com.iosoftworks.st.assignmenttwo.entity.player.HumanPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,19 +14,11 @@ public class GameManager {
 
     private GameManager() {
         Roller roller = new Roller();
-        Player human = new HumanPlayer();
-        Player ai = new AIPlayer();
-        players.add(human);
-        players.add(ai);
-
-        human.initialHand();
-        ai.initialHand();
-
-        //todo middle steps. actual game logic bit
-
-
-        checkVictor();
-
+        this.players.addAll(new ArrayList<Player>() {{
+            add(new HumanPlayer());
+            add(new AIPlayer());
+        }});
+        players.forEach(Player::initialHand);
     }
 
     public static GameManager getInstance() {
@@ -64,5 +56,24 @@ public class GameManager {
        }else if (players.get(1).totalScore > players.get(0).totalScore){
            System.out.println("ai wins");
        }
+    }
+
+
+    public void beginLoop() {
+        boolean shouldExit = false;
+
+
+        while(!shouldExit) {
+            // player turn
+            players.get(0).turnLogic();
+            // ai turn
+            players.get(1).turnLogic();
+
+            // check victor
+            checkVictor();
+            // prompt continue?
+            // if !continue: shouldExit = true;
+
+        }
     }
 }
