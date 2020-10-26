@@ -53,21 +53,29 @@ public class GameManagerTest {
     //TODO
     @Test
     public void CheckWinnerHuman_ExpectingTrue(){
-
+        GameManager.getInstance().getPlayers().get(0).totalScore = 21;
+        GameManager.getInstance().getPlayers().get(1).totalScore = 2;
+        Assert.assertEquals(GameManager.getInstance().getPlayers().get(0),GameManager.getInstance().checkVictor());
     }
     //TODO
     @Test
     public void CheckWinnerAI_ExpectingTrue(){
-
+        GameManager.getInstance().getPlayers().get(0).totalScore = 2;
+        GameManager.getInstance().getPlayers().get(1).totalScore = 21;
+        Assert.assertEquals(GameManager.getInstance().getPlayers().get(1),GameManager.getInstance().checkVictor());
     }
     //TODO
     @Test
     public void CheckWinnerDraw_ExpectingTrue(){
-
+        GameManager.getInstance().getPlayers().get(0).totalScore = 22;
+        GameManager.getInstance().getPlayers().get(1).totalScore = 22;
+        Assert.assertEquals(null,GameManager.getInstance().checkVictor());
     }
     //TODO
     @Test
-    public void CheckWinnerNotNull_ExpectingTrue(){
-
+    public void CheckWinnerNull_ExpectingTrue(){
+        GameManager.getInstance().getPlayers().get(0).totalScore = 22;
+        GameManager.getInstance().getPlayers().get(1).totalScore = 22;
+        Assert.assertEquals(null,GameManager.getInstance().checkVictor());
     }
 }
