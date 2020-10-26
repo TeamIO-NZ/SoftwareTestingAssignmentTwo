@@ -29,7 +29,7 @@ jobs:
       - task: notify-success
         config:
           platform: linux
-          image_resource: &apline
+          image_resource: &alpine
             type: docker-image
             source:
               repository: alpine
@@ -40,45 +40,53 @@ jobs:
             path: sh
             args:
             - -c
-            - ./assignment-repo/ci/notify_discord.sh "((hook-url))" assignmnet-two success
+            - |
+              apk add --no-cache --upgrade curl
+              ./assignment-repo/ci/notify_discord.sh "((hook-url))" assignmnet-two success
         
     on_abort:
       do:
       - task: notify-abort
         config:
           platform: linux
-          image_resource: *apline
+          image_resource: *alpine
           inputs:
             - name: assignment-repo
           run:
             path: sh
             args:
             - -c
-            - ./assignment-repo/ci/notify_discord.sh "((hook-url))" assignmnet-two abort
+            - |
+              apk add --no-cache --upgrade curl
+              ./assignment-repo/ci/notify_discord.sh "((hook-url))" assignmnet-two abort
         
     on_failure:
       do:
       - task: notify-failure
         config:
           platform: linux
-          image_resource: *apline
+          image_resource: *alpine
           inputs:
             - name: assignment-repo
           run:
             path: sh
             args:
             - -c
-            - ./assignment-repo/ci/notify_discord.sh "((hook-url))" assignmnet-two failure
+            - |
+              apk add --no-cache --upgrade curl
+              ./assignment-repo/ci/notify_discord.sh "((hook-url))" assignmnet-two failure
     on_error:
       do:
       - task: notify-error
         config:
           platform: linux
-          image_resource: *apline
+          image_resource: *alpine
           inputs:
             - name: assignment-repo
           run:
             path: sh
             args:
             - -c
-            - ./assignment-repo/ci/notify_discord.sh "((hook-url))" assignmnet-two error
+            - |
+              apk add --no-cache --upgrade curl
+              ./assignment-repo/ci/notify_discord.sh "((hook-url))" assignmnet-two error
