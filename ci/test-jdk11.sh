@@ -3,6 +3,8 @@
 # From TeamIO-NZ/concourse-scripts
 # Use along with the test-jdk11.yml task config.
 
+cd repo
+
 export ROOT_FOLDER=$( pwd )
 export GRADLE_USER_HOME="${ROOT_FOLDER}/.gradle"
 
