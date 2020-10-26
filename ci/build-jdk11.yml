@@ -1,0 +1,28 @@
+# Used to build java 11 projects with gradle on concourse
+# From TeamIO-NZ/concourse-scripts
+# Use along with the build-jdk11.sh task config.
+
+---
+platform: linux
+
+image_resource:
+  type: registry-image
+  source:
+    repository: "openjdk"
+    tag: "11-jdk"
+
+inputs:
+  - name: assignment-two # change to your git resource name
+    path: repo
+
+outputs:
+  - name: java-artifacts
+    path: build/libs
+
+caches:
+  - paths: .gradle/
+
+run:
+  path: sh
+  args:
+  - repo/ci/build-jdk11.sh
