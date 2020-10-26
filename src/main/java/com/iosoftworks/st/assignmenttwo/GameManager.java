@@ -30,25 +30,30 @@ public class GameManager {
         return players;
     }
 
-    public void checkVictor(){
+    public Player checkVictor(){
         //easy reference for players
         Player humanPlayer = players.get(0);
         Player aiPlayer = players.get(1);
         if (humanPlayer.totalScore > 21 && aiPlayer.totalScore > 21){
             System.out.println("neither wins");
+            return null;
         }
         else if (humanPlayer.totalScore > 21 && aiPlayer.totalScore < 21){
             System.out.println("human wins");
+            return humanPlayer;
         }
         else if (humanPlayer.totalScore < 21 && aiPlayer.totalScore > 21){
             System.out.println("ai wins");
+            return aiPlayer;
         }
         else{
             if (humanPlayer.totalScore < aiPlayer.totalScore){
                 System.out.println("ai wins");
+                return aiPlayer;
             }
             else{
                 System.out.println("human wins");
+                return humanPlayer;
             }
         }
     }
@@ -63,7 +68,7 @@ public class GameManager {
             // ai turn
             boolean isAIDone =players.get(1).turnLogic();
             // check victor
-            checkVictor();
+            Player victor = checkVictor();
             // prompt continue?
             // if !continue: shouldExit = true;
 
