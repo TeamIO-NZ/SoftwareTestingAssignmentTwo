@@ -76,6 +76,7 @@ public class GameManager {
             // prompt continue?
             // if !continue: shouldExit = true;
 
+            shouldExit = !InputManager.getInstance().promptBool("Play Again?");
         }
     }
 }
