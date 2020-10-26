@@ -2,6 +2,7 @@
 resources:
   - name: assignment-repo
     type: git
+    icon: github
     source:
       uri: https://github.com/TeamIO-NZ/SoftwareTestingAssignmentTwo
       branch: master
@@ -12,22 +13,8 @@ jobs:
       - get: assignment-repo
         trigger: true
       - task: run-tests
-        config:
-            inputs:
-                - name: assignment-repo
-            platform: linux
-            image_resource: &jdkImage
-              type: registry-image
-              source:
-                repository: "openjdk"
-                tag: "11-jdk"
-            run:
-              path: sh
-              args: 
-              - -exc
-              - |
-                cd assignment-repo
-                ./gradlew test --stacktrace
+        input_mapping: {project-repo: assignment-repo}
+        file: assignment-repo/ci/test-jdk11.yml
 
   - name: build
     plan:
@@ -35,15 +22,71 @@ jobs:
         passed: [test]
         trigger: true
       - task: run-build
+        input_mapping: {project-repo: assignment-repo}
+        file: assignment-repo/ci/build-jdk11.yml
+    on_success:
+      do:
+      - task: notify-success
         config:
-            inputs:
-                - name: assignment-repo
-            platform: linux
-            image_resource: *jdkImage
-            run:
-              path: sh
-              args: 
-              - -exc
-              - |
-                cd assignment-repo
-                ./gradlew build --stacktrace
+          platform: linux
+          image_resource: &alpine
+            type: docker-image
+            source:
+              repository: alpine
+              tag: edge
+          inputs:
+            - name: assignment-repo
+          run:
+            path: sh
+            args:
+            - -c
+            - |
+              apk add --no-cache --upgrade curl
+              ./assignment-repo/ci/notify_discord.sh "((hook-url))" assignmnet-two success
+        
+    on_abort:
+      do:
+      - task: notify-abort
+        config:
+          platform: linux
+          image_resource: *alpine
+          inputs:
+            - name: assignment-repo
+          run:
+            path: sh
+            args:
+            - -c
+            - |
+              apk add --no-cache --upgrade curl
+              ./assignment-repo/ci/notify_discord.sh "((hook-url))" assignmnet-two abort
+        
+    on_failure:
+      do:
+      - task: notify-failure
+        config:
+          platform: linux
+          image_resource: *alpine
+          inputs:
+            - name: assignment-repo
+          run:
+            path: sh
+            args:
+            - -c
+            - |
+              apk add --no-cache --upgrade curl
+              ./assignment-repo/ci/notify_discord.sh "((hook-url))" assignmnet-two failure
+    on_error:
+      do:
+      - task: notify-error
+        config:
+          platform: linux
+          image_resource: *alpine
+          inputs:
+            - name: assignment-repo
+          run:
+            path: sh
+            args:
+            - -c
+            - |
+              apk add --no-cache --upgrade curl
+              ./assignment-repo/ci/notify_discord.sh "((hook-url))" assignmnet-two error

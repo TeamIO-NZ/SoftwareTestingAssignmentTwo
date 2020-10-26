@@ -1,0 +1,24 @@
+# Used to test java 11 projects with gradle on concourse
+# From TeamIO-NZ/concourse-scripts
+# Use along with the test-jdk11.sh task config.
+
+---
+platform: linux
+
+image_resource:
+  type: registry-image
+  source:
+    repository: "openjdk"
+    tag: "11-jdk"
+
+inputs:
+  - name: project-repo
+    path: repo
+
+caches:
+  - path: repo/.gradle/
+
+run:
+  path: sh
+  args:
+  - repo/ci/test-jdk11.sh

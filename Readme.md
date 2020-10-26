@@ -8,10 +8,10 @@
 |Task|Status|James|Joe|
 |:---|:---:|:---:|:---:|
 |Create Repo|[x]|[x]|[x]|
-|Collect requirements from Sim Discussion|[ ]|[ ]|[ ]|
-|Put requirements in Readme.md|[ ]|[ ]|[ ]|
-|User Acceptance Test Spreadsheet|[ ]|[ ]|[ ]|
-|Traceability Matrix|[ ]|[ ]|[ ]|
+|Collect requirements from Sim Discussion|[x]|[ ]|[ ]|
+|Put requirements in Readme.md|[x]|[x]|[x]|
+|User Acceptance Test Spreadsheet|[x]|[ ]|[ ]|
+|Traceability Matrix|[x]|[x]|[x]|
 |Test plans (at least 2)|[ ]|[ ]|[ ]|
 |Code Program|[ ]|[ ]|[ ]|
 |Implement Unit Tests|[ ]|[ ]|[ ]|
@@ -20,6 +20,7 @@
 |Screenshots of tests in action|[ ]|[ ]|[ ]|
 |Executive Summary|[ ]|[ ]|[ ]|
 |Ensure Contribution gap < 20%|[ ]|[ ]|[ ]|
+
 ## Requirements
 
 //work on this section
@@ -100,15 +101,20 @@ This report must contain:
  Your Customer/Project Owner wants you to implement a console-based blackjack game with 2 dice. The human
  player plays against the computer.
  
- Note: We should expand these requirements because they suck
  
- 1: The human players starts.<br>
- 2: At start, the player gets 2 random numbers.<br>
- 3: The random number are summed up.<br>
- 4: The player can then choose to hold or roll again the dice.<br>
- 5: If they choose to roll again, numbers are added to the previous sum.<br>
- 6: If the player holds, it is the computer’s turn.<br>
- 7: The closest to 21 without going over is the winner.<br>
+1:Create two players. Assign one to human and one to computer
+2:Create game loop/stack. Put the human player on top.
+3:First player goes.
+4:At start, the player gets two random numbers between 1-13
+5:The random numbers are summed up
+6:The player can then choose to hold or roll again
+7:If they choose to roll again, numbers are added to the previous sum
+8:If the player holds, its the computers turn
+9:Give the computer two random numbers between 1-13
+10:The random numbers are summed up
+11:if total is less than 15 roll again and add that
+12:The closest to 21 without going over is the winner
+13:Display winner on screen
 
 *Test Plan Standard IEEE 829*<br>
  Appendix B<br>

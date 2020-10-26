@@ -1,4 +1,4 @@
-package com.iosoftworks.st.assignmenttwo.models.player;
+package com.iosoftworks.st.assignmenttwo.entity.player;
 
 import com.iosoftworks.st.assignmenttwo.Roller;
 
@@ -11,17 +11,20 @@ public abstract class Player {
     public List<Integer> score = new ArrayList<>(); // found fix via testing "= new ArrayList<>();"
     public int totalScore;
 
-    public abstract void turnLogic();
+    //returns true when turn is complete
+    public abstract boolean turnLogic();
 
     Roller roller = new Roller();
 
     public void initialHand(){
-        score.add(roller.roll());
-        score.add(roller.roll());
-        sumScore();
+        score.clear();
+        this.score.add(roller.roll());
+        this.score.add(roller.roll());
     }
+
     public void newRoll(){
-        score.add(roller.roll());
+        int roll = roller.roll();
+        score.add(roll);
         sumScore();
     }
     public void sumScore(){
@@ -31,4 +34,5 @@ public abstract class Player {
             totalScore += num;
         }
     }
+
 }

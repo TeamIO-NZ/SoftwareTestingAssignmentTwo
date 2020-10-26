@@ -1,11 +1,10 @@
 package com.iosoftworks.st.assignmenttwo;
 
-import com.iosoftworks.st.assignmenttwo.models.player.Player;
-import com.iosoftworks.st.assignmenttwo.models.player.ai.AIPlayer;
-import com.iosoftworks.st.assignmenttwo.models.player.human.HumanPlayer;
+import com.iosoftworks.st.assignmenttwo.entity.player.Player;
+import com.iosoftworks.st.assignmenttwo.entity.player.AIPlayer;
+import com.iosoftworks.st.assignmenttwo.entity.player.HumanPlayer;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class GameManager {
@@ -15,19 +14,11 @@ public class GameManager {
 
     private GameManager() {
         Roller roller = new Roller();
-        Player human = new HumanPlayer();
-        Player ai = new AIPlayer();
-        players.add(human);
-        players.add(ai);
-
-        human.initialHand();
-        ai.initialHand();
-
-        //todo middle steps. actual game logic bit
-
-
-        checkVictor();
-
+        this.players.addAll(new ArrayList<Player>() {{
+            add(new HumanPlayer());
+            add(new AIPlayer());
+        }});
+        players.forEach(Player::initialHand);
     }
 
     public static GameManager getInstance() {
@@ -40,30 +31,42 @@ public class GameManager {
     }
 
     public void checkVictor(){
-        if(players.get(0).totalScore > 21){
-            if(players.get(1).totalScore > 21){
-                //todo neither wins
-                System.out.println("neither wins");
+        //easy reference for players
+        Player humanPlayer = players.get(0);
+        Player aiPlayer = players.get(1);
+        if (humanPlayer.totalScore > 21 && aiPlayer.totalScore > 21){
+            System.out.println("neither wins");
+        }
+        else if (humanPlayer.totalScore > 21 && aiPlayer.totalScore < 21){
+            System.out.println("human wins");
+        }
+        else if (humanPlayer.totalScore < 21 && aiPlayer.totalScore > 21){
+            System.out.println("ai wins");
+        }
+        else{
+            if (humanPlayer.totalScore < aiPlayer.totalScore){
+                System.out.println("ai wins");
             }
             else{
-                //todo human wins
                 System.out.println("human wins");
             }
         }
-       else if(players.get(1).totalScore > 21){
-            if(players.get(0).totalScore > 21){
-                //todo neither wins
-                System.out.println("neither wins");
-            }
-            else{
-                //todo ai wins
-                System.out.println("ai wins");
-            }
+    }
+
+    public void beginLoop() {
+        boolean shouldExit = false;
+
+
+        while(!shouldExit) {
+            // player turn
+            boolean isPlayerDone = players.get(0).turnLogic();
+            // ai turn
+            boolean isAIDone =players.get(1).turnLogic();
+            // check victor
+            checkVictor();
+            // prompt continue?
+            // if !continue: shouldExit = true;
+
         }
-       if (players.get(0).totalScore > players.get(1).totalScore){
-           System.out.println("human wins");
-       }else if (players.get(1).totalScore > players.get(0).totalScore){
-           System.out.println("ai wins");
-       }
     }
 }
