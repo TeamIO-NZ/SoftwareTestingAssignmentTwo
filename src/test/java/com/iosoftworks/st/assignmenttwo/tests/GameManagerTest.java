@@ -69,16 +69,13 @@ public class GameManagerTest {
     public void CheckWinnerDraw_ExpectingTrue(){
         GameManager.getInstance().getPlayers().get(0).totalScore = 22;
         GameManager.getInstance().getPlayers().get(1).totalScore = 22;
-        //Assert.assertEquals(null,GameManager.getInstance().checkVictor());
-        //todo work out what to put here
-
-
+        Assert.assertEquals(null,GameManager.getInstance().checkVictor());
     }
     //TODO
     @Test
     public void CheckWinnerNull_ExpectingTrue(){
         GameManager.getInstance().getPlayers().get(0).totalScore = 22;
-        GameManager.getInstance().getPlayers().get(0).totalScore = 22;
+        GameManager.getInstance().getPlayers().get(1).totalScore = 22;
         Assert.assertEquals(null,GameManager.getInstance().checkVictor());
     }
 }
