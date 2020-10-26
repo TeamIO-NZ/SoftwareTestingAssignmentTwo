@@ -1,8 +1,6 @@
 package com.iosoftworks.st.assignmenttwo.tests;
 
 import com.iosoftworks.st.assignmenttwo.GameManager;
-import com.iosoftworks.st.assignmenttwo.models.player.ai.AIPlayer;
-import com.iosoftworks.st.assignmenttwo.models.player.human.HumanPlayer;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
