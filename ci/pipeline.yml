@@ -2,6 +2,7 @@
 resources:
   - name: assignment-repo
     type: git
+    icon: github
     source:
       uri: https://github.com/TeamIO-NZ/SoftwareTestingAssignmentTwo
       branch: master
@@ -47,3 +48,61 @@ jobs:
               - |
                 cd assignment-repo
                 ./gradlew build --stacktrace
+    on_success:
+      do:
+      - task: notify-success
+        config:
+          platform: linux
+          image_resource: &apline
+            type: docker-image
+            source:
+              repository: alpine
+              tag: edge
+          inputs:
+            - name: assignment-repo
+          run:
+            path: sh
+            args:
+            - -c
+            - ./ci/notify_discord.sh "((hook-url))" assignmnet-two success
+        
+    on_abort:
+      do:
+      - task: notify-abort
+        config:
+          platform: linux
+          image_resource: *apline
+          inputs:
+            - name: assignment-repo
+          run:
+            path: sh
+            args:
+            - -c
+            - ./ci/notify_discord.sh "((hook-url))" assignmnet-two abort
+        
+    on_failure:
+      do:
+      - task: notify-failure
+        config:
+          platform: linux
+          image_resource: *apline
+          inputs:
+            - name: assignment-repo
+          run:
+            path: sh
+            args:
+            - -c
+            - ./ci/notify_discord.sh "((hook-url))" assignmnet-two failure
+    on_error:
+      do:
+      - task: notify-error
+        config:
+          platform: linux
+          image_resource: *apline
+          inputs:
+            - name: assignment-repo
+          run:
+            path: sh
+            args:
+            - -c
+            - ./ci/notify_discord.sh "((hook-url))" assignmnet-two error
