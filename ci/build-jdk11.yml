@@ -12,7 +12,7 @@ image_resource:
     tag: "11-jdk"
 
 inputs:
-  - name: assignment-two # change to your git resource name
+  - name: project-repo
     path: repo
 
 outputs:

@@ -13,6 +13,7 @@ jobs:
       - get: assignment-repo
         trigger: true
       - task: run-tests
+        input_mapping: {project-repo: assignment-repo}
         file: assignment-repo/ci/test-jdk11.yml
 
   - name: build
@@ -21,6 +22,7 @@ jobs:
         passed: [test]
         trigger: true
       - task: run-build
+        input_mapping: {project-repo: assignment-repo}
         file: assignment-repo/ci/build-jdk11.yml
     on_success:
       do:
