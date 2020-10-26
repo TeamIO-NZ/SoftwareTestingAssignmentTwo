@@ -10,5 +10,6 @@ repositories {
 }
 
 dependencies {
+    implementation("com.googlecode.lanterna", "lanterna", "3.0.3")
     testImplementation("junit", "junit", "4.12")
 }
