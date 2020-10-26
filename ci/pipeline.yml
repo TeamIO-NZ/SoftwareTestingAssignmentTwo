@@ -13,22 +13,7 @@ jobs:
       - get: assignment-repo
         trigger: true
       - task: run-tests
-        config:
-            inputs:
-                - name: assignment-repo
-            platform: linux
-            image_resource: &jdkImage
-              type: registry-image
-              source:
-                repository: "openjdk"
-                tag: "11-jdk"
-            run:
-              path: sh
-              args: 
-              - -exc
-              - |
-                cd assignment-repo
-                ./gradlew test --stacktrace
+        file: test-jdk11.yml
 
   - name: build
     plan:
@@ -36,18 +21,7 @@ jobs:
         passed: [test]
         trigger: true
       - task: run-build
-        config:
-            inputs:
-                - name: assignment-repo
-            platform: linux
-            image_resource: *jdkImage
-            run:
-              path: sh
-              args: 
-              - -exc
-              - |
-                cd assignment-repo
-                ./gradlew build --stacktrace
+        file: build-jdk11.yml
     on_success:
       do:
       - task: notify-success
