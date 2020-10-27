@@ -20,6 +20,7 @@ public abstract class Player {
         score.clear();
         this.score.add(roller.roll());
         this.score.add(roller.roll());
+        sumScore();
     }
 
     public void newRoll(){
@@ -34,10 +35,10 @@ public abstract class Player {
             totalScore += num;
         }
     }
-    public void displayCurrentScore(String player){
+    public void displayCurrentScore(){
         int startingY = 6;
         for(int i = 0; i < this.score.size(); i++){
-            System.out.println(player + " num # " + this.score.get(i));
+            System.out.println(this.name + " num # " + this.score.get(i));
         }
         System.out.println("Total Score: " + this.totalScore);
     }

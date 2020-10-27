@@ -15,8 +15,8 @@ public class GameManager {
     private GameManager() {
         Roller roller = new Roller();
         this.players.addAll(new ArrayList<Player>() {{
-            add(new HumanPlayer());
-            add(new AIPlayer());
+            add(new HumanPlayer("Human"));
+            add(new AIPlayer("Ai"));
         }});
         players.forEach(Player::initialHand);
     }
