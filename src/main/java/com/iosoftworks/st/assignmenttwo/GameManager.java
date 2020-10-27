@@ -42,12 +42,20 @@ public class GameManager {
             System.out.println("its a draw");
             return null;
         }
-        else if (humanPlayer.totalScore > 21 && aiPlayer.totalScore < 21){
+        else if (humanPlayer.totalScore == 21 && aiPlayer.totalScore < 21){
             System.out.println("human wins");
             return humanPlayer;
         }
-        else if (humanPlayer.totalScore < 21 && aiPlayer.totalScore > 21){
+        else if (humanPlayer.totalScore < 21 && aiPlayer.totalScore == 21){
             System.out.println("ai wins");
+            return aiPlayer;
+        }
+        else if (humanPlayer.totalScore > 21 && aiPlayer.totalScore < 21){
+            System.out.println("ai wins");
+            return aiPlayer;
+        }
+        else if (humanPlayer.totalScore < 21 && aiPlayer.totalScore > 21){
+            System.out.println("human wins");
             return aiPlayer;
         }
         else{
