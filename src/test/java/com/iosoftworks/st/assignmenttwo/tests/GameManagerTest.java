@@ -50,32 +50,34 @@ public class GameManagerTest {
         GameManager.getInstance().getPlayers().get(1).sumScore();
         Assert.assertTrue(GameManager.getInstance().getPlayers().get(1).totalScore >= 0);
     }
-    //TODO
     @Test
-    public void CheckWinnerHuman_ExpectingTrue(){
+    public void CheckWinnerHuman_Score21bar2_ExpectingTrue(){
         GameManager.getInstance().getPlayers().get(0).totalScore = 21;
         GameManager.getInstance().getPlayers().get(1).totalScore = 2;
         Assert.assertEquals(GameManager.getInstance().getPlayers().get(0),GameManager.getInstance().checkVictor());
     }
-    //TODO
     @Test
-    public void CheckWinnerAI_ExpectingTrue(){
+    public void CheckWinnerAI_Score2bar21_ExpectingTrue(){
         GameManager.getInstance().getPlayers().get(0).totalScore = 2;
         GameManager.getInstance().getPlayers().get(1).totalScore = 21;
         Assert.assertEquals(GameManager.getInstance().getPlayers().get(1),GameManager.getInstance().checkVictor());
     }
-    //TODO
     @Test
-    public void CheckWinnerDraw_ExpectingTrue(){
+    public void CheckWinnerDraw_Score22bar22_ExpectingTrue(){
         GameManager.getInstance().getPlayers().get(0).totalScore = 22;
         GameManager.getInstance().getPlayers().get(1).totalScore = 22;
-        Assert.assertEquals(null,GameManager.getInstance().checkVictor());
+        Assert.assertNull(GameManager.getInstance().checkVictor());
     }
-    //TODO
     @Test
-    public void CheckWinnerNull_ExpectingTrue(){
-        GameManager.getInstance().getPlayers().get(0).totalScore = 22;
-        GameManager.getInstance().getPlayers().get(1).totalScore = 22;
-        Assert.assertEquals(null,GameManager.getInstance().checkVictor());
+    public void CheckWinnerHuman_Score21bar20_ExpectingTrue(){
+        GameManager.getInstance().getPlayers().get(0).totalScore = 21;
+        GameManager.getInstance().getPlayers().get(1).totalScore = 20;
+        Assert.assertEquals(GameManager.getInstance().getPlayers().get(0),GameManager.getInstance().checkVictor());
+    }
+    @Test
+    public void CheckWinnerAI_Score21bar20_ExpectingTrue(){
+        GameManager.getInstance().getPlayers().get(0).totalScore = 20;
+        GameManager.getInstance().getPlayers().get(1).totalScore = 21;
+        Assert.assertEquals(GameManager.getInstance().getPlayers().get(1),GameManager.getInstance().checkVictor());
     }
 }

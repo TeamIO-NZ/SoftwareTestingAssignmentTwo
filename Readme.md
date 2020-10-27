@@ -8,18 +8,20 @@
 |Task|Status|James|Joe|
 |:---|:---:|:---:|:---:|
 |Create Repo|[x]|[x]|[x]|
-|Collect requirements from Sim Discussion|[x]|[ ]|[ ]|
+|Collect requirements from Sim Discussion|[x]|[x]|[x]|
 |Put requirements in Readme.md|[x]|[x]|[x]|
-|User Acceptance Test Spreadsheet|[x]|[ ]|[ ]|
+|User Acceptance Test Spreadsheet|[x]|[x]|[x]|
 |Traceability Matrix|[x]|[x]|[x]|
-|Test plans (at least 2)|[ ]|[ ]|[ ]|
-|Code Program|[ ]|[ ]|[ ]|
-|Implement Unit Tests|[ ]|[ ]|[ ]|
+|Test plans (at least 2)|[ ]|[x]|[ ]|
+|Code Program|[x]|[x]|[x]|
+|Implement Unit Tests|[x]|[x]|[x]|
 |Explain away not included Methods|[ ]|[ ]|[ ]|
 |500-1000 word report per test run|[ ]|[ ]|[ ]|
 |Screenshots of tests in action|[ ]|[ ]|[ ]|
 |Executive Summary|[ ]|[ ]|[ ]|
 |Ensure Contribution gap < 20%|[ ]|[ ]|[ ]|
+
+Joe might have broken our contribution gap by writing CI/CD stuff
 
 ## Requirements
 
