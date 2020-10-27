@@ -6,22 +6,14 @@ public class HumanPlayer extends Player {
     public boolean turnLogic() {
         this.initialHand();
         //display numbers
-        displayCurrentScore();
+        this.displayCurrentScore("Human");
         //roll or not
         while (promptForNewRoll()){
             newRoll();
+            this.displayCurrentScore("Human");
         }
         //hold
         return true;
-    }
-    //todo move this to player for better code practises?
-    //would need math for the terminal but thats all
-    public void displayCurrentScore(){
-        int startingY = 6;
-        for(int i = 0; i < this.score.size(); i++){
-            //todo this is for when joes thing is pushed
-           // terminal.writeString(score.get(i), 2,6+i, false);
-        }
     }
     //prompt for new roll
     public boolean promptForNewRoll(){

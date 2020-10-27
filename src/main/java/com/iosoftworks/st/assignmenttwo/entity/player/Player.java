@@ -34,5 +34,11 @@ public abstract class Player {
             totalScore += num;
         }
     }
-
+    public void displayCurrentScore(String player){
+        int startingY = 6;
+        for(int i = 0; i < this.score.size(); i++){
+            System.out.println(player + " num # " + this.score.get(i));
+        }
+        System.out.println("Total Score: " + this.totalScore);
+    }
 }
